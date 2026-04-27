@@ -19,65 +19,59 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-40 bg-white/85 backdrop-blur-md border-b transition-shadow duration-300 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-md border-b border-[#e3dfd8] shadow-sm"
-          : "bg-[#0b2e4b]/35 backdrop-blur-sm border-b border-white/10"
+          ? "border-[#e3dfd8] shadow-[0_8px_30px_-12px_rgba(14,58,95,0.12)]"
+          : "border-[#e3dfd8]/60"
       }`}
     >
-      <div className="container-custom flex items-center justify-between h-20 py-4">
-        <Link href="/" className="flex items-center" aria-label="Schreiner Heizungstechnik — Startseite">
+      <div className="container-custom flex items-center justify-between h-16 sm:h-18 md:h-20 py-3 md:py-4 gap-3">
+        <Link
+          href="/"
+          className="flex items-center shrink-0"
+          aria-label="Schreiner Heizungstechnik — Startseite"
+        >
           <Image
             src="/logo.svg"
             alt="Schreiner Heizungstechnik"
             width={220}
             height={40}
             priority
-            className={`h-9 md:h-10 w-auto transition-all duration-300 ${
-              scrolled ? "" : "brightness-0 invert"
-            }`}
+            className="h-7 sm:h-9 md:h-10 w-auto"
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`px-3.5 py-2 text-sm rounded-full transition-colors ${
-                scrolled
-                  ? "text-[#1f2428] hover:text-[#0e3a5f] hover:bg-black/5"
-                  : "text-white/90 hover:text-white hover:bg-white/10"
-              }`}
+              className="px-3 xl:px-3.5 py-2 text-sm text-[#1f2428] hover:text-[#0e3a5f] rounded-full hover:bg-black/5 transition-colors"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <a
             href={`tel:${site.phoneLink.replace(/\s+/g, "")}`}
-            className={`hidden md:inline-flex items-center gap-2 text-sm px-3 py-2 transition-colors ${
-              scrolled
-                ? "text-[#1f2428] hover:text-[#0e3a5f]"
-                : "text-white/90 hover:text-white"
-            }`}
+            className="hidden xl:inline-flex items-center gap-2 text-sm text-[#1f2428] hover:text-[#0e3a5f] px-3 py-2"
           >
             <Phone className="w-4 h-4" />
             <span>{site.phone}</span>
           </a>
-          <Link href="/anfrage" className="btn-primary !py-2.5 !px-5 text-sm">
-            Anfrage starten
+          <Link
+            href="/anfrage"
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2.5 rounded-full bg-[#0e3a5f] text-white text-sm font-medium hover:bg-[#0b2e4b] shadow-sm transition-colors"
+          >
+            <span className="hidden sm:inline">Anfrage starten</span>
+            <span className="sm:hidden">Anfrage</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <button
             onClick={() => setOpen(!open)}
-            className={`lg:hidden grid place-items-center w-10 h-10 rounded-full border transition-colors ${
-              scrolled
-                ? "bg-white border-[#e3dfd8] text-[#1f2428]"
-                : "bg-white/10 border-white/25 text-white backdrop-blur"
-            }`}
+            className="lg:hidden grid place-items-center w-10 h-10 rounded-full border border-[#e3dfd8] bg-white text-[#1f2428] shrink-0"
             aria-label="Menü"
             aria-expanded={open}
           >
@@ -88,7 +82,7 @@ export default function Header() {
 
       {open && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-[#e3dfd8]">
-          <nav className="container-custom py-4 flex flex-col">
+          <nav className="container-custom py-3 flex flex-col">
             {nav.map((item) => (
               <Link
                 key={item.href}
