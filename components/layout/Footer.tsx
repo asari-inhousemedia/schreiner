@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
 import { site, nav, services } from "@/lib/site-config";
 
@@ -14,19 +15,15 @@ export default function Footer() {
       <div className="container-custom">
         <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-12">
           <div className="lg:col-span-4">
-            <div className="flex items-center gap-2.5 mb-5">
-              <span className="w-10 h-10 rounded-xl bg-white text-[#0e3a5f] grid place-items-center font-display font-semibold text-lg">
-                S
-              </span>
-              <div className="leading-tight">
-                <div className="font-display text-lg font-semibold">
-                  Schreiner
-                </div>
-                <div className="text-[10px] tracking-[0.18em] uppercase text-white/60">
-                  Heizungstechnik
-                </div>
-              </div>
-            </div>
+            <Link href="/" className="inline-block mb-6" aria-label="Schreiner Heizungstechnik — Startseite">
+              <Image
+                src="/logo.svg"
+                alt="Schreiner Heizungstechnik"
+                width={220}
+                height={40}
+                className="h-10 w-auto brightness-0 invert"
+              />
+            </Link>
             <p className="text-white/70 text-sm leading-relaxed">
               {site.company}. Ihr Tübinger Handwerksbetrieb für Heizung,
               Sanitär, Solar und Kundendienst — seit über 50 Jahren.
